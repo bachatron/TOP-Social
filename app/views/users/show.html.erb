@@ -1,46 +1,8 @@
 <div class="user-profile">
-  <p><%= @user.email %></p>
-  <p><%= @user.followers.count %> Followers</p>
-  <p><%= @user.following.count %> Following</p>
+  <%= render "profile", user: @user %>
+  <%= render "follow_button", user: @user %>
+  <%= render "post_form", user: @user %>
+  <%= render "posts", user: @user %>
 
-  <div class="actions">
-      <% if user_signed_in? && current_user != @user %>
-          <% if current_user.following?(@user) %>
-              <%= button_to "Unfollow",
-                  relationship_path(current_user.active_relationships.find_by(followed: @user)),
-                  method: :delete %>
-          <% else %>
-              <%= button_to "Follow",
-                  relationships_path(followed_id: @user.id),
-                  method: :post %>
-          <% end %>
-      <% end %>
-
-    <% if user_signed_in? && current_user == @user %>
-        <%= form_with model: Post.new do |f| %>
-        <div>
-          <%= f.text_field :title, placeholder: "Title" %>
-        </div>
-
-        <div>
-          <%= f.text_area :body, placeholder: "Write something..." %>
-        </div>
-
-        <%= f.submit "Create Post" %>
-    <% end %>
-
-      <h3>Posts</h3>
-
-      <% @user.posts.each do |post| %>
-      <div>
-        <strong><%= post.title %></strong>
-        <p><%= post.body %></p>
-
-        <%= link_to "View", post_path(post) %>
-      </div>
-      <% end %>
-    <% end %>
-    <%= link_to "Back", users_path, class: "btn btn-secondary" %>
-  </div>
-</div>
+  <%= link_to "Back", users_path %>
 </div>

@@ -40,4 +40,7 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
+  def relationship_with(user)
+    active_relationships.find_by(followed: user)
+  end
 end

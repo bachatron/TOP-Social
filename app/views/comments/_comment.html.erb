@@ -1,0 +1,10 @@
+<p>
+  <strong><%= comment.user.email %></strong>:
+  <%= comment.body %>
+</p>
+
+<% if owner?(comment) %>
+  <%= button_to "Delete Comment",
+      post_comment_path(post, comment),
+      method: :delete %>
+<% end %>

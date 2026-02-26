@@ -1,0 +1,7 @@
+<% if user_signed_in? && current_user == user %>
+  <%= form_with model: Post.new do |f| %>
+    <%= f.text_field :title, placeholder: "Title" %>
+    <%= f.text_area :body, placeholder: "Write something..." %>
+    <%= f.submit "Create Post" %>
+  <% end %>
+<% end %>
