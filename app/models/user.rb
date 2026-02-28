@@ -43,4 +43,8 @@ class User < ApplicationRecord
   def relationship_with(user)
     active_relationships.find_by(followed: user)
   end
+
+  def liked?(post)
+    likes.exists?(post: post)
+  end
 end

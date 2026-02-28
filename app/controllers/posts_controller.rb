@@ -7,7 +7,8 @@ class PostsController < ApplicationController
         if @post.save
             redirect_to @post
         else
-            redirect_back fallback_location: root_path
+            @user = current_user
+            render "users/show", status: :unprocessable_entity
         end
     end
 

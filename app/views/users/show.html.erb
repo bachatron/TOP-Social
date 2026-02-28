@@ -1,8 +1,7 @@
 <div class="user-profile">
-  <%= render "profile", user: @user %>
-  <%= render "follow_button", user: @user %>
-  <%= render "post_form", user: @user %>
-  <%= render "posts", user: @user %>
-
+  <%= render "users/profile", user: @user %>
+  <%= render "users/follow_button", user: @user %>
+  <%= render "users/post_form", user: @user %>
+  <%= render "users/posts", user: @user %>
   <%= link_to "Back", users_path %>
 </div>
