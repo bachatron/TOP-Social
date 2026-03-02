@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  after_create :send_welcome_email
+
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -46,5 +48,13 @@ class User < ApplicationRecord
 
   def liked?(post)
     likes.exists?(post: post)
+  end
+
+  def feed_posts
+    Post.where(user: following + [ self ]).order(created_at: :desc)
+  end
+
+  def send_welcome_email
+    UserMailer.welcome_email(self).deliver_later
   end
 end

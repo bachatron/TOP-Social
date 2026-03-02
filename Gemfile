@@ -61,6 +61,7 @@ group :development do
   gem "web-console"
   gem "rubocop"
   gem "rubocop-rails"
+  gem "letter_opener"
 end
 
 group :test do

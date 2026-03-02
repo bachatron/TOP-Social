@@ -1,8 +1,12 @@
 <div style="padding:10px; background:#eee;">
   <% if user_signed_in? %>
+    <%= gravatar_for(current_user) %>
+    
     Logged in as: <strong><%= current_user.email %></strong>
 
     <%= link_to "My Profile", user_path(current_user) %>
+
+    <%= link_to "Feed", feed_path %>
 
     <%= button_to "Log out",
         destroy_user_session_path,
@@ -11,5 +15,10 @@
     <p>Not logged in</p>
 
     <%= link_to "Log in", new_user_session_path %>
+
+    <%= link_to "Sign up", new_user_registration_path %>
+
   <% end %>
+
+  <%= link_to "View all users", users_path %>
 </div>

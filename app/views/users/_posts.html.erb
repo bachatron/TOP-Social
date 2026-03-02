@@ -1,12 +1,4 @@
 <% if user.posts.any? %>
   <h3>Posts</h3>
-
-  <% user.posts.order(created_at: :desc).each do |post| %>
-    <div>
-      <strong><%= post.title %></strong>
-      <p><%= post.body %></p>
-
-      <%= link_to "View", post_path(post) %>
-    </div>
-  <% end %>
+  <%= render user.posts.order(created_at: :desc)%>
 <% end %>

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get "feed", to: "feed#index", as: :feed
+
+  root "feed#index"
+
   devise_for :users
 
   resources :users, only: [ :index, :show ]

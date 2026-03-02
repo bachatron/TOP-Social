@@ -1,6 +1,10 @@
 class PostsController < ApplicationController
     before_action :authenticate_user!, only: [ :create, :destroy ]
 
+    def index
+        @posts = Post.all.order(created_at: :desc)
+    end
+
     def create
         @post = current_user.posts.build(post_params)
 
