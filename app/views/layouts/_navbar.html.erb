@@ -1,24 +1,29 @@
-<div style="padding:10px; background:#eee;">
-  <% if user_signed_in? %>
-    <%= gravatar_for(current_user) %>
-    
-    Logged in as: <strong><%= current_user.email %></strong>
+<nav class="navbar">
+  <div class="navbar-left">
+    <%= link_to "Top Social", feed_path, class: "logo" %>
+  </div>
 
-    <%= link_to "My Profile", user_path(current_user) %>
+  <div class="navbar-center">
+    <%= link_to "Users", users_path, class: "nav-link" %>
+  </div>
 
-    <%= link_to "Feed", feed_path %>
+  <div class="navbar-right">
+    <% if user_signed_in? %>
+      <div class="user-info">
+        <%= avatar_for(current_user, size: 40, class: "navbar-avatar") %>
 
-    <%= button_to "Log out",
-        destroy_user_session_path,
-        method: :delete %>
-  <% else %>
-    <p>Not logged in</p>
+        <span><%= current_user.email %></span>
+      </div>
 
-    <%= link_to "Log in", new_user_session_path %>
+      <%= link_to "Profile", user_path(current_user), class: "nav-link" %>
 
-    <%= link_to "Sign up", new_user_registration_path %>
-
-  <% end %>
-
-  <%= link_to "View all users", users_path %>
-</div>
+      <%= button_to "Logout",
+          destroy_user_session_path,
+          method: :delete,
+          class: "btn logout-btn" %>
+    <% else %>
+      <%= link_to "Log in", new_user_session_path, class: "nav-link" %>
+      <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
+    <% end %>
+  </div>
+</nav>

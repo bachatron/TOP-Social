@@ -1,9 +1,10 @@
-<%= render "shared/errors", object: @post %>
+<div class="post-form-card">
+  <%= render "shared/errors", object: @post %>
 
-<% if user_signed_in? && current_user == user %>
-  <%= form_with model: @post do |f| %>
-    <%= f.text_field :title, placeholder: "Title" %>
-    <%= f.text_area :body, placeholder: "Write something..." %>
-    <%= f.submit "Create Post" %>
+    <%= form_with model: @post do |f| %>
+      <%= f.text_field :title, placeholder: "Title" %>
+      <%= f.text_area :body, placeholder: "Write something..." %>
+      <%= f.file_field :image %>
+      <%= f.submit "Create Post" %>
   <% end %>
-<% end %>
+</div>

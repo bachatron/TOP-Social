@@ -1,10 +1,299 @@
-/*
- * This is a manifest file that'll be compiled into application.css.
- *
- * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
- * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
- * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
- * depending on specificity.
- *
- * Consider organizing styles into separate files for maintainability.
- */
+:root {
+  --primary: #4f46e5;   /* modern indigo */
+  --bg: #f4f6f8;
+  --card: #ffffff;
+  --text: #333;
+}
+
+/* ========== Base ========== */
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+}
+
+/* Layout */
+.container {
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 0 10px;
+}
+
+/* ========== Navbar ========== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 10px 20px;
+  background: #ffffff;
+  border-bottom: 1px solid #ddd;
+}
+
+.navbar-left,
+.navbar-center,
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Logo */
+.logo {
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--primary);
+}
+
+/* Links */
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+/* User */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Avatar */
+.avatar,
+.post-avatar,
+.profile-avatar,
+.comment-avatar,
+.user-avatar {
+  border-radius: 50%;
+}
+
+/* ========== Buttons ========== */
+.btn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+}
+
+.btn-danger {
+  background: #e74c3c;
+  color: white;
+}
+
+.btn-secondary {
+  background: #e5e7eb;
+  color: #333;
+}
+
+.btn-secondary:hover {
+  background: #d1d5db;
+}
+
+/* ========== Post Card ========== */
+.post-card {
+  background: white;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.post-user a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.post-user a:hover {
+  text-decoration: underline;
+}
+
+.post-content h3 {
+  margin: 5px 0;
+}
+
+.post-content p {
+  margin: 5px 0 10px;
+}
+
+.post-image {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+/* Footer */
+.post-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.post-meta {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 14px;
+}
+
+.post-time {
+  color: #777;
+  font-size: 12px;
+}
+
+/* ========== Profile ========== */
+.user-profile {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.profile-card,
+.post-form-card {
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.profile-card {
+  margin-bottom: 20px;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.profile-info p {
+  margin: 5px 0 0;
+  color: #666;
+}
+
+/* ========== Forms ========== */
+input,
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+textarea {
+  min-height: 60px;
+}
+
+/* ========== Users List ========== */
+.user-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px; /* 👈 THIS fixes the “sticking” */
+
+  padding: 12px;
+  margin-bottom: 10px;
+
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+.user-info {
+  flex-grow: 1;
+}
+
+/* ========== Comments ========== */
+.comments-section {
+  margin-top: 20px;
+}
+
+.comment {
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+
+.comment-body {
+  margin: 0 0 5px 0;
+  font-size: 14px;
+}
+
+.comment-delete {
+  font-size: 12px;
+  padding: 4px 8px;
+}
+
+.comment-form {
+  margin-top: 15px;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+}
+
+body {
+  line-height: 1.5;
+}
+
+small {
+  color: #777;
+}
+
+button,
+input[type="submit"] {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  opacity: 0.9;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline; /* optional, gives feedback */
+}
+
+a.btn {
+  display: inline-block;
+}

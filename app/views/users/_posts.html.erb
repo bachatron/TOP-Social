@@ -1,4 +1,6 @@
 <% if user.posts.any? %>
   <h3>Posts</h3>
-  <%= render user.posts.order(created_at: :desc)%>
+  <%= render user.posts.order(created_at: :desc), full_view: false %>
+<% else %>
+  <p>No posts yet</p>
 <% end %>

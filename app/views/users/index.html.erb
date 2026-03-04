@@ -1,5 +1,31 @@
+<h1>Users</h1>
+
 <% @users.each do |user| %>
-    <div class="user">
-        <%= link_to user.email, user_path(user), class: "btn btn-secondary" if current_user != user %>
+  <div class="user-card">
+    <%= avatar_for(user, size: 50, class: "user-avatar") %>
+
+    <div class="user-info">
+      <strong>
+        <%= link_to user.email, user_path(user) %>
+      </strong>
+
+      <p>
+        <%= user.followers.count %> followers
+      </p>
     </div>
+
+    <% if user_signed_in? && current_user != user %>
+      <div class="user-action">
+        <% if current_user.following?(user) %>
+          <%= button_to "Unfollow",
+              relationship_path(current_user.relationship_with(user)),
+              method: :delete %>
+        <% else %>
+          <%= button_to "Follow",
+              relationships_path(followed_id: user.id),
+              method: :post %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 <% end %>

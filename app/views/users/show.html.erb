@@ -1,7 +1,18 @@
 <div class="user-profile">
-  <%= render "users/profile", user: @user %>
-  <%= render "users/follow_button", user: @user %>
-  <%= render "users/post_form", user: @user %>
-  <%= render "users/posts", user: @user %>
+  <div class="profile-section">
+    <%= render "users/profile", user: @user %>
+    <%= render "users/follow_button", user: @user %>
+  </div>
+
+  <% if user_signed_in? && current_user == @user %>
+    <div class="post-form-section">
+      <%= render "users/post_form", user: @user %>
+    </div>
+  <% end %>
+
+  <div class="posts-section">
+    <%= render "users/posts", user: @user %>
+  </div>
+
   <%= link_to "Back", users_path %>
 </div>

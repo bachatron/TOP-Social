@@ -1,6 +1,10 @@
 class User < ApplicationRecord
   after_create :send_welcome_email
 
+  has_one_attached :avatar
+
+  validate :acceptable_avatar
+
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -56,5 +60,19 @@ class User < ApplicationRecord
 
   def send_welcome_email
     UserMailer.welcome_email(self).deliver_later
+  end
+
+  private
+
+  def acceptable_avatar
+    return unless avatar.attached?
+
+    if avatar.byte_size > 5.megabytes
+      errors.add(:avatar, "too big")
+    end
+
+    unless avatar.content_type.in?(%w[image/png image/jpeg image/jpg])
+      errors.add(:avatar, "must be PNG or JPG")
+    end
   end
 end

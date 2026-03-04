@@ -1,4 +1,15 @@
-<%= gravatar_for(user) %>
-<p><%= user.email %></p>
-<p><%= user.followers.count %> Followers</p>
-<p><%= user.following.count %> Following</p>
+<div class="profile-card">
+  <div class="profile-header">
+    <%= avatar_for(user, size: 80, class: "profile-avatar") %>
+
+    <div class="profile-info">
+      <h2><%= user.email %></h2>
+
+      <p>
+        <strong><%= user.followers.count %></strong> Followers
+        •
+        <strong><%= user.following.count %></strong> Following
+      </p>
+    </div>
+  </div>
+</div>

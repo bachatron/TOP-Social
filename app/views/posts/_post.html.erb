@@ -1,6 +1,29 @@
-<div class="post">
-  <strong><%= post.title %></strong>
-  <p><%= post.body %></p>
-  <p>Posted by: <%= link_to post.user.email, user_path(post.user) %></p>
-  <%= link_to "View", post_path(post) %>
+<div class="post-card">
+  <div class="post-header">
+    <%= avatar_for(post.user, size: 40, class: "post-avatar") %>
+
+    <div class="post-user">
+      <strong>
+        <%= link_to post.user.email, user_path(post.user) %>
+      </strong>
+    </div>
+  </div>
+
+  <div class="post-content">
+    <h3><%= post.title %></h3>
+    <p><%= post.body %></p>
+
+    <% if post.image.attached? %>
+      <%= image_tag post.image.variant(resize_to_limit: [500, 500]), class: "post-image" %>
+    <% end %>
+  </div>
+
+  <div class="post-footer">
+    <span><%= post.likes.count %> likes</span>
+    <span><%= post.comments.count %> comments</span>
+    <small><%= time_ago_in_words(post.created_at) %> ago</small>
+    <% unless full_view %>
+      <%= link_to "View", post_path(post), class: "btn btn-secondary" %>
+    <% end %>
+  </div>
 </div>
